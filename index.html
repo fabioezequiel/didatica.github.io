@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajo Pr谩ctico N掳4 - M贸dulo 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #4a5568;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #718096;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            color: #2d3748;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+        }
+
+        .section h3 {
+            color: #4a5568;
+            font-size: 1.4rem;
+            margin: 20px 0 15px 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section h4 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin: 15px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            background: linear-gradient(135deg, #edf2f7, #e2e8f0);
+            transform: translateX(5px);
+        }
+
+        .card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .problem-priority {
+            background: linear-gradient(135deg, #fed7d7, #feb2b2);
+            border-left-color: #e53e3e;
+            color: #742a2a;
+        }
+
+        .problem-priority.high {
+            background: linear-gradient(135deg, #fed7d7, #feb2b2);
+        }
+
+        .problem-priority.medium {
+            background: linear-gradient(135deg, #feebc8, #fbd38d);
+            color: #744210;
+        }
+
+        .problem-priority.low {
+            background: linear-gradient(135deg, #c6f6d5, #9ae6b4);
+            color: #22543d;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            border-left: 3px solid #667eea;
+            padding-left: 15px;
+            margin: 15px 0;
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .saberes-section {
+            background: linear-gradient(135deg, #e6fffa, #b2f5ea);
+            border-left-color: #38b2ac;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>馃摎 TRABAJO PR脕CTICO N掳4</h1>
+            <p>Correspondiente al M贸dulo 1 - An谩lisis del Dise帽o Curricular</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="icon">A</span>An谩lisis del Dise帽o Curricular de la Secundaria Orientada</h2>
+            
+            <h3>馃幆 Temas/T贸picos para Juventudes y Adolescencias en Trayectorias Escolares</h3>
+            
+            <div class="highlight">
+                <h4>Objetivos de la Educaci贸n formal:</h4>
+                <p>"Contribuir a formar ciudadanos libres, participativos, responsables e informados, capaces de ejercer y defender sus derechos, que participen activamente en la vida social, econ贸mica y pol铆tica."</p>
+            </div>
+            
+            <div class="highlight">
+                <p>"Personas que tengan la motivaci贸n y capacidad de lograr su desarrollo personal, laboral y familiar, dispuestas a mejorar su entorno social y natural, as铆 como a continuar aprendiendo a lo largo de la vida, en un mundo complejo que vive cambios vertiginosos."</p>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>Ambitos de formaci贸n:</h4>
+                    <p>1.Cognitivo</p>
+					<p>2.Socio afectivo</p>
+					<p>3.Econ贸mico</p>
+					<p>4.Etico</p>
+					
+                </div>
+                <div class="card">
+                    <h4>Contextos bidireccionales de formaci贸n y actuaci贸n:</h4>
+                    <p>"M谩s pr贸ximo: familiar, laboral, escolar"</p>
+					<p>M谩s amplio: entorno natural, social o pol铆tica (geogr谩fica, estatal,...)</p>
+                </div>
+            </div>
+
+            <h3>馃摉 Fundamentos Pedag贸gicos del Dise帽o Curricular</h3>
+            
+            <div class="highlight">
+                <h4>1. Saberes como Relaci贸n Transformadora</h4>
+                <p>"Los saberes son actividades culturales e individuales del individuo para interactuar con otros dentro de un determinado contexto, es decir, estas actividades son conocimientos, actitudes, habilidades y valores que una persona utiliza para relacionarse con los dem谩s.
+"</p>
+            </div>
+            
+            <div class="highlight">
+                <h4>2. Capacidades Integradoras</h4>
+                <p><strong>Seg煤n el DC:</strong> "Combinaci贸n de saberes, habilidades, valores y disposiciones, y se alcanzan como resultado de tareas complejas en las que se ponen en juego tanto el 'saber' como el 'saber hacer'."</p>
+            </div>
+            
+            <div class="highlight">
+                <h4>3. V铆nculo Pedag贸gico Fundamental</h4>
+                <p><strong>Principio central:</strong> "Condici贸n sustantiva del proceso de ense帽anza y aprendizaje es necesario contar con docentes que, en la manera de vincularse con sus estudiantes, construyan contextos favorables para que el aprendizaje suceda. Mostrar respeto al/la j贸ven por lo que es y lo que hace."</p>
+            </div>
+            
+
+            <h3>馃敡 Formatos Metodol贸gicos - Seg煤n el Dise帽o Curricular de Jujuy</h3>
+            
+            <div class="quote">
+                "La organizaci贸n de la ense帽anza tiene que estar necesariamente vinculada con la l贸gica de los saberes que se ense帽an, a qui茅nes se los ense帽an, y para qu茅 se los ense帽a" - "Las formas de aproximaci贸n y vinculaci贸n con los saberes deben plantear a los/as estudiantes un espacio en el que la confianza y la exigencia permitan asumir la responsabilidad y el esfuerzo que implica un aprendizaje"
+            </div>
+            
+            <div class="highlight">
+                <p><strong>Principio fundamental:</strong> "Los formatos constituyen alternativas diversas para la organizaci贸n de la tarea pedag贸gica (...) Responden a diversos modos de intervenci贸n"</p>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>馃洜锔?TALLERES</h4>
+                    <p><strong>Caracter铆sticas seg煤n investigaci贸n:</strong> Metodolog铆a participativa que combina teor铆a y pr谩ctica mediante la experiencia directa.</p>
+                    <p><strong>Estructura:</strong> Trabajo en grupos peque帽os, roles rotativos, construcci贸n colectiva del conocimiento.</p>
+                    <p><strong>Enfoque del DC:</strong> Formato que responde a modos espec铆ficos de intervenci贸n pedag贸gica centrada en el hacer colaborativo.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>鈿栵笍 ATENEOS</h4>
+                    <p><strong>Caracter铆sticas:</strong> Espacios de reflexi贸n y an谩lisis cr铆tico sobre casos, problemas o situaciones complejas del 谩mbito educativo.</p>
+                    <p><strong>Metodolog铆a:</strong> Presentaci贸n de casos, an谩lisis grupal, debate dirigido, construcci贸n colectiva de soluciones.</p>
+                    <p><strong>Prop贸sito:</strong> Desarrollar pensamiento cr铆tico y capacidad de an谩lisis situacional.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>馃敩 LABORATORIOS</h4>
+                    <p><strong>Caracter铆sticas:</strong> Espacios de experimentaci贸n y verificaci贸n emp铆rica de teor铆as y conceptos cient铆ficos.</p>
+                    <p><strong>Proceso:</strong> Formulaci贸n de hip贸tesis, experimentaci贸n controlada, observaci贸n sistem谩tica, registro y an谩lisis de datos.</p>
+                    <p><strong>Aprendizaje:</strong> Desarrollo del m茅todo cient铆fico y pensamiento anal铆tico.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>馃搵 PROYECTOS</h4>
+                    <p><strong>Caracter铆sticas:</strong> Metodolog铆a integradora que aborda problem谩ticas reales mediante planificaci贸n sistem谩tica y trabajo interdisciplinario.</p>
+                    <p><strong>Fases:</strong> Identificaci贸n del problema, planificaci贸n, ejecuci贸n, evaluaci贸n, socializaci贸n de resultados.</p>
+                    <p><strong>Integraci贸n:</strong> Conecta conocimientos de m煤ltiples 谩reas curriculares con la realidad contextual.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>馃帗 SEMINARIOS</h4>
+                    <p><strong>Caracter铆sticas:</strong> Espacios de profundizaci贸n te贸rica e investigaci贸n sobre tem谩ticas espec铆ficas de cada orientaci贸n.</p>
+                    <p><strong>Modalidad:</strong> Investigaci贸n individual/grupal, exposiciones acad茅micas, debates especializados, producci贸n de textos.</p>
+                    <p><strong>Desarrollo:</strong> Capacidades de investigaci贸n, expresi贸n acad茅mica y pensamiento especializado.</p>
+                </div>
+            </div>
+
+            <h3>鈿狅笍 Problem谩ticas Transversales - Seg煤n el Dise帽o Curricular de Jujuy</h3>
+            
+            <div class="quote">
+                "Requiere en su implementaci贸n un abordaje interdisciplinar y sientan bases de un posicionamiento 茅tico y pol铆tico de la escuela en relaci贸n con la compleja realidad de la que forma parte (...) B煤squeda de aprendizajes integrados y significativo en los estudiantes y la formaci贸n de una ciudadan铆a cr铆tica y participativa"
+            </div>
+            
+            <h4>馃搵 Las Problem谩ticas Transversales:</h4>
+            
+            <div class="problem-priority high">
+                <h4>馃 PRIMERA PRIORIDAD: Educaci贸n Sexual Integral</h4>
+                <p><strong>Justificaci贸n:</strong> Surge de la necesidad de garantizar derechos y prevenir problem谩ticas como la violencia de g茅nero, el abuso, la discriminaci贸n y los embarazos no deseados..</p>
+                <p><strong>Enfoque:</strong> Transversaliza cinco ejes: valorar la afectividad, reconocer la perspectiva de g茅nero, respetar la diversidad, ejercer derechos y cuidar el cuerpo y la salud..</p>
+                <p><strong>Transversalidad:</strong>Contribuye a la construcci贸n de v铆nculos respetuosos, informados y responsables. Promueve el pensamiento cr铆tico frente a estereotipos de g茅nero y mandatos sociales. </p>
+            </div>
+            
+            <div class="problem-priority medium">
+                <h4>馃 SEGUNDA PRIORIDAD: Educaci贸n Ambiental</h4>
+                <p><strong>Relevancia contextual:</strong> La cr铆sis ambiental actual y el cambio clim谩tico son desaf铆os globales que impactan directamente en la vida cotidiana. La Ley de Educaci贸n Ambiental Integral (Ley 27.621 en Argentina) impulsa la incorporaci贸n transversal de esta tem谩tica en todos los niveles y modalidades</p>
+                <p><strong>Enfoque:</strong> Promueve una conciencia ecol贸gica cr铆tica, el respeto por la biodiversidad y el compromiso con el desarrollo sostenible. Involucra saberes cient铆ficos, 茅ticos, sociales y culturales</p>
+                <p><strong>Ciudadan铆a:</strong> Formar ciudadanos ambientalmente responsables, capaces de actuar frente a los problemas ecol贸gicos de su entorno.</p>
+            </div>
+            
+            <div class="problem-priority low">
+                <h4>馃 TERCERA PRIORIDAD: Ciudadan铆a Digital y Cultura Democr谩tica</h4>
+                <p><strong>Conexi贸n con juventudes:</strong> En un mundo hiperdigitalizado, es urgente formar sujetos capaces de participar cr铆ticamente en entornos virtuales.Las redes sociales, la inteligencia artificial y la informaci贸n masiva plantean nuevos desaf铆os 茅ticos, pol铆ticos y cognitivos.</p>
+                <p><strong>Enfoque:</strong> Aborda temas como: alfabetizaci贸n digital, ciberbullying, protecci贸n de datos, uso responsable de la tecnolog铆a, desinformaci贸n y discurso de odio. Se vincula con la formaci贸n para la vida democr谩tica, la convivencia y el pensamiento cr铆tico.</p>
+                <p><strong>Sostenimiento:</strong>Formar ciudadanos digitales conscientes, reflexivos y comprometidos con la 茅tica en la virtualidad..</p>
+            </div>
+            
+        </div>
+
+        <div class="section saberes-section">
+            <h2><span class="icon">B</span>Los Saberes Escolares - Investigaci贸n Bibliogr谩fica</h2>
+            
+            <h3>馃攳 Conceptualizaci贸n de Saberes Escolares</h3>
+            
+            <div class="quote">
+                "Las escuelas son espacios socialmente construidos y legitimados para la formaci贸n de personas: 'lo que en cierto sentido define la educaci贸n y su diferencia con otras acciones sociales es su intento de socializar mediante el conocimiento'"
+            </div>
+            
+            <h4>Definici贸n de Saberes seg煤n el Dise帽o Curricular de Jujuy:</h4>
+            <div class="highlight">
+                <p><strong>"Conjunto de disposiciones que permiten mirar, pensar, operar y transformar la realidad. (...) El saber es un producto y una actividad cultural e individual, se produce, se internaliza y se ejerce en interacci贸n con otros, en un contexto situado. De all铆 que se le comprenda fundamentalmente como una relaci贸n."</strong></p>
+            </div>
+            
+            <h4>Caracter铆sticas de los Saberes Escolares:</h4>
+            <ul>
+                <li><strong>Funci贸n Socializadora:</strong> Los saberes requieren estar presentes en la instituci贸n escolar sean diversos y epistemol贸gicamente diferentes, de manera que permitan aprehender la 'realidad' en sus distintas dimensiones</li>
+                <li><strong>Mediaci贸n Institucional:</strong> Los contenidos son mediados por la visi贸n pedag贸gica-administrativa de cada docente y escuela</li>
+                <li><strong>Relaci贸n Transformadora:</strong> Se comprenden fundamentalmente como una relaci贸n que permite transformar la realidad</li>
+                <li><strong>Contextualizaci贸n:</strong> Se producen, internalizan y ejercen en interacci贸n con otros, en un contexto situado espec铆fico</li>
+                <li><strong>Integraci贸n con Capacidades:</strong> Se combinan con habilidades, valores y disposiciones para generar capacidades complejas</li>
+            </ul>
+            
+            <h3>馃搳 Tipos de Saberes seg煤n Diferentes Enfoques</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>Informe Delors - 4 Pilares</h4>
+                    <ul>
+                        <li><strong>Aprender a conocer:</strong> Instrumentos de comprensi贸n</li>
+                        <li><strong>Aprender a hacer:</strong> Influir sobre el entorno</li>
+                        <li><strong>Aprender a vivir juntos:</strong> Participaci贸n y cooperaci贸n</li>
+                        <li><strong>Aprender a ser:</strong> Desarrollo integral de la persona</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Enfoque de Yur茅n (Habermas)</h4>
+                    <ul>
+                        <li><strong>Mundo Objetivo:</strong> Saberes te贸ricos y procedimentales</li>
+                        <li><strong>Mundo Social:</strong> Saberes de convivencia</li>
+                        <li><strong>Mundo Subjetivo:</strong> Saberes existenciales</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Interaccionismo (Pastr茅)</h4>
+                    <ul>
+                        <li><strong>Actividad Productiva:</strong> Transformar la realidad</li>
+                        <li><strong>Actividad Constructiva:</strong> Transformaci贸n personal</li>
+                        <li><strong>Conceptualizaci贸n:</strong> Reorganizaci贸n cognitiva</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>馃幆 Importancia de los Saberes en la Formaci贸n</h3>
+            
+            <div class="highlight">
+                <p>"Revalorizar los contenidos es revalorizar el saber (todos los saberes) y entender que la escuela cumple su funci贸n cuando hace circular los saberes fundados, los ense帽a para que se aprendan y deja que se aprendan, para erradicar la marginaci贸n del saber"</p>
+            </div>
+            
+            <h4>Integraci贸n con el Dise帽o Curricular de Jujuy:</h4>
+            <div class="quote">
+                "El campo curricular es entonces un campo abierto donde, m谩s all谩 de la inclusi贸n tranquilizadora de algunas tem谩ticas sobre la multiculturalidad, lo importante es asegurar el criterio de cultura como condici贸n fronteriza que se traduce en la selecci贸n de fuentes de informaci贸n procurando la inclusi贸n de distintos formatos, en los criterios de organizaci贸n del saber, intentando superar el referente disciplinar como 煤nico t贸pico de interrogaci贸n y conocimiento" - Duschatzky, S.
+            </div>
+            
+            <p>Los saberes escolares en el Dise帽o Curricular de Jujuy no son meras transmisiones de informaci贸n, sino herramientas para:</p>
+            <ul>
+                <li><strong>Transformar la realidad:</strong> Como disposiciones que permiten operar y transformar el contexto</li>
+                <li><strong>Construir relaciones significativas:</strong> Se ejercen en interacci贸n con otros en contextos situados</li>
+                <li><strong>Desarrollar capacidades integradas:</strong> Combinaci贸n de saberes, habilidades, valores y disposiciones</li>
+                <li><strong>Formar ciudadan铆a cr铆tica:</strong> A trav茅s de problem谩ticas transversales que conectan con la realidad social</li>
+                <li><strong>Valorar la diversidad cultural:</strong> Reconociendo los bagajes sociales y culturales de los estudiantes</li>
+                <li><strong>Superar enfoques disciplinares:</strong> Integrando distintos formatos y fuentes de conocimiento</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><span class="icon">鉁</span>Conclusiones y Reflexiones</h2>
+            
+            <p>El an谩lisis del Dise帽o Curricular de Jujuy revela una propuesta pedag贸gica innovadora que trasciende el modelo tradicional de educaci贸n secundaria. La integraci贸n de saberes relacionales, formatos metodol贸gicos diversos y problem谩ticas transversales contextualizadas demuestra un enfoque hol铆stico y situado de la educaci贸n.</p>
+            
+            <h3>Aspectos Clave del Dise帽o Curricular de Jujuy:</h3>
+            <ul>
+                <li><strong>Construcci贸n Participativa:</strong> Proceso de 9 meses con 270 docentes y supervisores de todas las regiones</li>
+                <li><strong>Saberes como Relaci贸n:</strong> Comprensi贸n de los saberes como disposiciones que permiten transformar la realidad en interacci贸n con otros</li>
+                <li><strong>Juventudes Heterog茅neas:</strong> Reconocimiento de la diversidad de culturas juveniles y trayectorias escolares reales</li>
+                <li><strong>Autonom铆a Pedag贸gica:</strong> Otorgamiento de autonom铆a a directivos para tomar decisiones pedag贸gicas contextualizadas</li>
+                <li><strong>V铆nculo Pedag贸gico Central:</strong> 脡nfasis en la construcci贸n de contextos favorables para el aprendizaje basados en el respeto</li>
+                <li><strong>Transversalidad 脡tica:</strong> Problem谩ticas transversales que requieren posicionamiento 茅tico y pol铆tico de la escuela</li>
+                <li><strong>Formatos Diversificados:</strong> Alternativas metodol贸gicas que responden a diferentes modos de intervenci贸n pedag贸gica</li>
+            </ul>
+            
+            <h3>Innovaciones Destacadas:</h3>
+            <div class="highlight">
+                <p><strong>Campo Curricular Abierto:</strong> Seg煤n Duschatzky, se busca "superar el referente disciplinar como 煤nico t贸pico de interrogaci贸n y conocimiento", valorando "la interpretaci贸n m谩s que la verificaci贸n, la construcci贸n de hip贸tesis y conjeturas m谩s que la formulaci贸n de proposiciones verdaderas."</p>
+            </div>
+            
+            <div class="quote">
+                El desaf铆o actual es materializar esta propuesta te贸rica innovadora en pr谩cticas educativas transformadoras que realmente preparen a los j贸venes de Jujuy para enfrentar los retos del siglo XXI, respetando sus culturas juveniles y contextos socioculturales espec铆ficos, mientras desarrollan capacidades cr铆ticas y participativas para la ciudadan铆a democr谩tica.
+            </div>
+
+            <h3>Reflexi贸n Final:</h3>
+            <p>El Dise帽o Curricular de Jujuy 2018 representa un avance significativo hacia una educaci贸n m谩s inclusiva, contextualizada y democr谩tica. Su enfoque en las trayectorias reales de los estudiantes, la valoraci贸n de la diversidad cultural provincial y la construcci贸n participativa del documento, evidencian un compromiso genuino con la transformaci贸n educativa desde y para el territorio juje帽o.</p>
+        </div>
+
+
+        <div class="section">
+            <h2><span class="icon">馃幆</span>Recomendaciones para la Implementaci贸n</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>馃挕 Para Docentes</h4>
+                    <ul>
+                        <li>Apropiar la concepci贸n de saberes como relaci贸n transformadora</li>
+                        <li>Desarrollar v铆nculos pedag贸gicos basados en el respeto y la confianza</li>
+                        <li>Implementar variedad de formatos metodol贸gicos</li>
+                        <li>Integrar problem谩ticas transversales en la planificaci贸n</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>馃彨 Para Instituciones</h4>
+                    <ul>
+                        <li>Ejercer la autonom铆a pedag贸gica de manera responsable</li>
+                        <li>Adaptar el curr铆culum a la realidad regional espec铆fica</li>
+                        <li>Fortalecer el trabajo interdisciplinario</li>
+                        <li>Crear espacios de reflexi贸n sobre trayectorias juveniles</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>馃搵 Para Supervisores</h4>
+                    <ul>
+                        <li>Acompa帽ar la interpretaci贸n contextualizada del DC</li>
+                        <li>Facilitar espacios de construcci贸n colectiva</li>
+                        <li>Asesorar en la implementaci贸n de formatos diversos</li>
+                        <li>Promover la evaluaci贸n formativa continua</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>馃専 Para el Sistema</h4>
+                    <ul>
+                        <li>Fortalecer la formaci贸n docente continua</li>
+                        <li>Crear redes de intercambio de experiencias</li>
+                        <li>Desarrollar recursos pedag贸gicos contextualizados</li>
+                        <li>Evaluar y ajustar la implementaci贸n peri贸dicamente</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="icon">馃摎</span>Referencias Bibliogr谩ficas</h2>
+            
+            <h3>Fuentes Consultadas:</h3>
+            <ul>
+                <li><strong>Gobierno de Jujuy - Ministerio de Educaci贸n</strong> (2018). <em>Dise帽o Curricular para la Educaci贸n Secundaria</em>. Tomo I: Marco General y Ciclo B谩sico. Secretar铆a de Innovaci贸n y Calidad Educativa.</li>
+                <li><strong>Fortoul-Ollivier, M. B.</strong> (2017). Los distintos tipos de saberes en las escuelas: su relevancia en la formaci贸n de sujetos. <em>Revista del Centro de Investigaci贸n. Universidad La Salle</em>, 13(47), 171-196.</li>
+				<li><strong>Delors, J.</strong> (1996). <em>La educaci贸n encierra un tesoro</em>. Informe a la UNESCO de la Comisi贸n Internacional sobre la educaci贸n para el siglo XXI.</li>
+                <li><strong>Yur茅n, T., Navia, C. & Saenger, C.</strong> (2005). <em>Ethos y autoformaci贸n del docente</em>. Ediciones Pomares.</li>
+            </ul>
+            
+            
+            <h3>Aspectos Clave:</h3>
+            <ul>
+                <li><strong>Diversidad Metodol贸gica:</strong> Los diferentes formatos permiten adaptarse a diversos estilos de aprendizaje</li>
+                <li><strong>Relevancia Social:</strong> Las problem谩ticas transversales conectan la educaci贸n con la realidad social</li>
+                <li><strong>Formaci贸n Integral:</strong> Los saberes escolares trascienden lo puramente acad茅mico</li>
+                <li><strong>Contextualizaci贸n:</strong> La educaci贸n se adapta a las necesidades locales y globales</li>
+            </ul>
+            
+            <div class="quote">
+                El desaf铆o actual es lograr que estos elementos te贸ricos se materialicen en pr谩cticas educativas transformadoras que realmente preparen a los j贸venes para enfrentar los retos del siglo XXI con competencias s贸lidas y valores humanos profundos.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
